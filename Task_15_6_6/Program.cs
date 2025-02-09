@@ -1,4 +1,6 @@
-﻿namespace Task_15_6_6
+﻿using System.Linq;
+
+namespace Task_15_6_6
 {
     internal class Program
     {
@@ -17,8 +19,18 @@
 
         static string[] GetAllStudents(Classroom[] classes)
         {
-            // ???
+            List<string> stud = new List<string>();
+            
+            stud = classes[0].Students.Concat(classes[1].Students).ToList();
+            stud = stud.Concat(classes[2].Students).ToList();
+
+            int j = 0;
+            string[] s = new string[stud.Count];
+            foreach (var student in stud)
+                s[j++] = student;
+
+            return s;
         }
-    }
+    
     }
 }
